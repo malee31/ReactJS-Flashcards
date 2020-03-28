@@ -1,32 +1,28 @@
-#App{
-  background-color: #282c34;
+#App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-header{
+header {
 	padding: .2em;
 	font-size: 2em;
 }
 
-#card{
+#card {
   width: 90vmin;
   height: 60vmin;
   perspective: 1000px;
   /*pointer-events: none;*/
 }
 
-#card:hover #flipContainer{
+#card:hover #flipContainer {
 	transform: rotateY(180deg);
 }
 
-#flipContainer{
+#flipContainer {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -37,7 +33,7 @@ header{
 	transform-style: preserve-3d;
 }
 
-#flipContainer div{
+#flipContainer div {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -50,11 +46,11 @@ header{
 	backface-visibility: hidden;
 }
 
-#flipContainer div:last-child{
+#flipContainer div:last-child {
 	transform: rotateY(180deg);
 }
 
-#flipContainer div p{
+#flipContainer div p {
 	width: auto;
 	height: auto;
 	color: white;
@@ -62,12 +58,12 @@ header{
 	padding-bottom: .5em;
 }
 
-@media (prefers-reduced-motion: no-preference){
-  .card{
+@media (prefers-reduced-motion: no-preference) {
+  .card {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-link{
+link {
   color: #61dafb;
 }
