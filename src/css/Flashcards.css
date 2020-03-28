@@ -1,4 +1,4 @@
-#App {
+#Flashcards {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -56,12 +56,6 @@ header {
 	color: white;
 	font-size: 5em;
 	padding-bottom: .5em;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .card {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 link {
