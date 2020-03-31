@@ -1,22 +1,22 @@
 import React from 'react';
 import '../css/Flashcards.css';
 
-export default({front, back}) => {
+export default({card, onNext}) => {
 	return(
 		<div id="Flashcards">
 			<header>
 				Flashcards
 			</header>
-			<div id="card">
+			<div id="card" onClick={onNext}>
 				<div id="flipContainer">
 					<div id="front">
 						<p id="frontText">
-							{front ? front : "Add some words"}
+							{card ? card.front ? card.front : "No Word" : "Add some words"}
 						</p>
 					</div>
 					<div id="back">
 						<p id="backText">
-							{back ? back : "Add some definitions"}
+							{card ? card.back ? card.back : "No Definition" : "Add some definitions"}
 						</p>
 					</div>
 				</div>
