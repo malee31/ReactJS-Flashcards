@@ -12,7 +12,8 @@ export default class WordBank extends React.Component
 		this.state = {
 			words: [], //type Array.{front: string, back: string}
 			currentPair: {"front": "", "back": ""},
-			currentIndex: 0
+			currentIndex: 0,
+			flipped: false
 		};
 		this.setCurrentPair = this.setCurrentPair.bind(this);
 		this.addCurrentPair = this.addCurrentPair.bind(this);
@@ -43,9 +44,19 @@ export default class WordBank extends React.Component
 
 	nextCard()
 	{
-		this.setState({
-			currentIndex: (this.state.currentIndex + 1) % this.state.words.length 
-		});
+		if(this.state.flipped)
+		{
+			this.setState({
+				flipped: false,
+				currentIndex: (this.state.currentIndex + 1) % this.state.words.length 
+			});
+		}
+		else
+		{
+			this.setState({
+				flipped: true
+			});
+		}
 	}
 
 	render()
@@ -55,15 +66,13 @@ export default class WordBank extends React.Component
 				<Switch>
 					<Route exact path={["/", "/home"]}>
 						<Home/>
-						<Link to="/cards">Cards</Link>
-						<Link to="/create">Make Cards</Link>
 					</Route>
 					<Route exact path="/create">
 						<Creator wordSets={this.state.words} addWord={this.addCurrentPair} pair={this.state.currentPair} change={this.setCurrentPair}/>
 						<Link to="/home">Home</Link>
 					</Route>
 					<Route exact path="/cards">
-						<Flashcards card={this.state.words[this.state.currentIndex]} onNext={this.nextCard}/>
+						<Flashcards card={this.state.words[this.state.currentIndex]} flipped={this.state.flipped} onNext={this.nextCard}/>
 						<Link to="/home">Home</Link>
 					</Route>
 				</Switch>

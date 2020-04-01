@@ -6,7 +6,6 @@ export default(props) => {
 			<p>Create your Flashcard Set</p>
 			<form onSubmit={props.addWord}>
 				{props.wordSets.map(set => {
-					console.log(set);
 					return(
 						<div className="set" key={set.front + set.back}>
 							<input type="text" value={set.front} readOnly></input>
