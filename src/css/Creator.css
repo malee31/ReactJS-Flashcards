@@ -1,0 +1,46 @@
+p {
+	font-size: 2em;
+	margin: .5em 0 .25em;
+}
+
+form {
+	width: 100vw;
+	padding: 0;
+	margin: 0;
+}
+
+input {
+	min-height: 5vmin;
+	padding: 1vmin;
+	margin: 0.1em;
+	border-radius: 3px;
+	font-size: 1em;
+}
+
+input[type="submit"] {
+	border-radius: 3px;
+}
+
+.word {
+	width: 15vw;
+}
+
+.define {
+	width: 45vw;
+}
+
+.set:first-child.set .word {
+	border-top-left-radius: 8px;
+}
+
+.set:last-of-type .word {
+	border-bottom-left-radius: 8px;
+}
+
+.set:first-child .define {
+	border-top-right-radius: 8px;
+}
+
+.set:last-of-type .define {
+	border-bottom-right-radius: 8px;
+}
