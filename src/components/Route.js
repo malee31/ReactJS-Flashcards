@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Nav from './Nav.js';
 import Home from './Home.js';
 import Creator from './Creator.js';
 import Flashcards from './Flashcards.js';
@@ -63,17 +64,16 @@ export default class WordBank extends React.Component
 	{
 		return(
 			<Router>
+				<Nav/>
 				<Switch>
 					<Route exact path={["/", "/home"]}>
 						<Home/>
 					</Route>
 					<Route exact path="/create">
 						<Creator wordSets={this.state.words} addWord={this.addCurrentPair} pair={this.state.currentPair} change={this.setCurrentPair}/>
-						<Link to="/home">Home</Link>
 					</Route>
 					<Route exact path="/cards">
 						<Flashcards card={this.state.words[this.state.currentIndex]} flipped={this.state.flipped} onNext={this.nextCard}/>
-						<Link to="/home">Home</Link>
 					</Route>
 				</Switch>
 			</Router>
