@@ -14,7 +14,7 @@
 }
 
 #card.flipped #flipContainer {
-	transform: rotateY(180deg);
+	transform: rotateY(-180deg);
 }
 
 #flipContainer {

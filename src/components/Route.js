@@ -11,7 +11,7 @@ export default class WordBank extends React.Component
 	{
 		super(props);
 		this.state = {
-			words: [], //type Array.{front: string, back: string}
+			words: JSON.parse(localStorage.getItem("words")) || [], //type Array.{front: string, back: string}
 			currentPair: {"front": "", "back": ""},
 			currentIndex: 0,
 			flipped: false
@@ -40,6 +40,8 @@ export default class WordBank extends React.Component
 		this.setState({
 			words: newWordSet,
 			currentPair: {"front": "", "back": ""}
+		}, () => {
+			localStorage.setItem("words", JSON.stringify(this.state.words));
 		});
 	}
 
