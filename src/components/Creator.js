@@ -7,11 +7,11 @@ export default(props) => {
 			<p>Create your Flashcard Set</p>
 			<form onSubmit={props.addWord}>
 				<div id="wordsets">
-					{props.wordSets.map(set => {
+					{props.wordSets.map((set, index) => {
 						return(
-							<div className="set" key={set.front + set.back}>
-								<input className="word" type="text" value={set.front} readOnly></input>
-								<input className="define" type="text" value={set.back} readOnly></input>
+							<div className="set" key={"wordsets[" + index + "]"} onClick={() => props.editHandler(index)}>
+								<input className="word" type="text" value={set.front} onChange={e => props.editing(e, true)}></input>
+								<input className="define" type="text" value={set.back} onChange={e => props.editing(e, false)}></input>
 							</div>
 						);
 					})}

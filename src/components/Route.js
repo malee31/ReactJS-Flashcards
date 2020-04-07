@@ -14,11 +14,20 @@ export default class WordBank extends React.Component
 			words: JSON.parse(localStorage.getItem("words")) || [], //type Array.{front: string, back: string}
 			currentPair: {"front": "", "back": ""},
 			currentIndex: 0,
+			editing: 0,
 			flipped: false
 		};
+		this.saveData = this.saveData.bind(this);
 		this.setCurrentPair = this.setCurrentPair.bind(this);
 		this.addCurrentPair = this.addCurrentPair.bind(this);
 		this.nextCard = this.nextCard.bind(this);
+		this.editIndex = this.editIndex.bind(this);
+		this.editCurrent = this.editCurrent.bind(this);
+	}
+
+	saveData()
+	{
+		localStorage.setItem("words", JSON.stringify(this.state.words));
 	}
 
 	setCurrentPair(index, e)
@@ -35,14 +44,12 @@ export default class WordBank extends React.Component
 	{
 		e.preventDefault();
 		if(this.state.currentPair.front === "" && this.state.currentPair.back === "") return;
-		var newWordSet = this.state.words.slice();
+		var newWordSet = [...this.state.words];
 		newWordSet.push(this.state.currentPair);
 		this.setState({
 			words: newWordSet,
 			currentPair: {"front": "", "back": ""}
-		}, () => {
-			localStorage.setItem("words", JSON.stringify(this.state.words));
-		});
+		}, this.saveData);
 	}
 
 	nextCard()
@@ -62,6 +69,24 @@ export default class WordBank extends React.Component
 		}
 	}
 
+	editIndex(index)
+	{
+		if(this.state.editing === index) return;
+		this.setState({
+			editing: index
+		});
+	}
+
+	editCurrent(e, isFront)
+	{
+		e.preventDefault();
+		var editedWords = [...this.state.words];
+		editedWords[this.state.editing][isFront? "front" : "back"] = e.target.value;
+		this.setState({
+			words: editedWords
+		}, this.saveData);
+	}
+
 	render()
 	{
 		return(
@@ -72,7 +97,7 @@ export default class WordBank extends React.Component
 						<Home/>
 					</Route>
 					<Route exact path="/create">
-						<Creator wordSets={this.state.words} addWord={this.addCurrentPair} pair={this.state.currentPair} change={this.setCurrentPair}/>
+						<Creator wordSets={this.state.words} addWord={this.addCurrentPair} pair={this.state.currentPair} change={this.setCurrentPair} editHandler={this.editIndex} editing={this.editCurrent}/>
 					</Route>
 					<Route exact path="/cards">
 						<Flashcards card={this.state.words[this.state.currentIndex]} flipped={this.state.flipped} onNext={this.nextCard}/>
