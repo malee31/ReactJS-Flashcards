@@ -44,6 +44,7 @@ export default class WordBank extends React.Component
 	{
 		e.preventDefault();
 		if(this.state.currentPair.front === "" && this.state.currentPair.back === "") return;
+		if(this.state.words.filter(word => word.front === this.state.currentPair.front).length) return;
 		var newWordSet = [...this.state.words];
 		newWordSet.push(this.state.currentPair);
 		this.setState({
