@@ -4,12 +4,15 @@ p {
 }
 
 form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	width: 100vw;
 	padding: 0;
 	margin: 0;
 }
 
-input {
+input, .pseudoInput {
 	min-height: 5vmin;
 	padding: 1vmin;
 	margin: 0.1em;
@@ -17,8 +20,22 @@ input {
 	font-size: 1em;
 }
 
-input[type="submit"] {
+input[type="submit"], .pseudoInput {
 	border-radius: 3px;
+}
+
+.pseudoInput {
+	background-color: white;
+	border: 1px solid gray;
+	box-shadow: 1px 1px gray;
+	color: black;
+	margin: 0;
+}
+
+.setContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .word {
@@ -27,6 +44,15 @@ input[type="submit"] {
 
 .define {
 	width: 45vw;
+}
+
+.deleteButton {
+	display: none;
+	width: 10vw;
+}
+
+.setContainer:hover .deleteButton {
+	display: block;
 }
 
 .set:first-child.set .word {
@@ -43,4 +69,10 @@ input[type="submit"] {
 
 .set:last-of-type .define {
 	border-bottom-right-radius: 8px;
+}
+
+#controlButtons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
