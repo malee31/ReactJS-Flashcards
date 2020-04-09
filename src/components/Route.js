@@ -21,6 +21,7 @@ export default class WordBank extends React.Component
 		this.setCurrentPair = this.setCurrentPair.bind(this);
 		this.addCurrentPair = this.addCurrentPair.bind(this);
 		this.nextCard = this.nextCard.bind(this);
+		this.deleteIndex = this.deleteIndex.bind(this);
 		this.editIndex = this.editIndex.bind(this);
 		this.editCurrent = this.editCurrent.bind(this);
 	}
@@ -70,6 +71,15 @@ export default class WordBank extends React.Component
 		}
 	}
 
+	deleteIndex(index, toEnd)
+	{
+		var wordCopy = [...this.state.words];
+		wordCopy.splice(index, toEnd ? wordCopy.length - index : 1);
+		this.setState({
+			words: wordCopy
+		}, this.saveData);
+	}
+
 	editIndex(index)
 	{
 		if(this.state.editing === index) return;
@@ -98,7 +108,7 @@ export default class WordBank extends React.Component
 						<Home/>
 					</Route>
 					<Route exact path="/create">
-						<Creator wordSets={this.state.words} addWord={this.addCurrentPair} pair={this.state.currentPair} change={this.setCurrentPair} editHandler={this.editIndex} editing={this.editCurrent}/>
+						<Creator wordSets={this.state.words} addWord={this.addCurrentPair} pair={this.state.currentPair} change={this.setCurrentPair} editHandler={this.editIndex} editing={this.editCurrent} del={this.deleteIndex}/>
 					</Route>
 					<Route exact path="/cards">
 						<Flashcards card={this.state.words[this.state.currentIndex]} flipped={this.state.flipped} onNext={this.nextCard}/>
