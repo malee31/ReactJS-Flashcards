@@ -14,12 +14,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+	 "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://github.io/ReactJS-Flashcards",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -35,5 +37,8 @@
   "author": "Marvin Lee",
   "keywords": [],
   "license": "ISC",
-  "description": "My first React App. Create flashcard sets and drill yourself on them!"
+  "description": "My first React App. Create flashcard sets and drill yourself on them!",
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
+  }
 }
