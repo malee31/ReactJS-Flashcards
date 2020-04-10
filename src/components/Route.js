@@ -113,6 +113,9 @@ export default class WordBank extends React.Component
 					<Route exact path={["/cards", "/ReactJS-Flashcards/cards"]}>
 						<Flashcards card={this.state.words[this.state.currentIndex]} flipped={this.state.flipped} onNext={this.nextCard}/>
 					</Route>
+					<Route>
+						<h1>Error 404. Page not found.</h1>
+					</Route>
 				</Switch>
 			</Router>
 		);
