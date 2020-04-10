@@ -6,8 +6,8 @@ export default() => {
 	return(
 		<main>
 			<header>Home</header>
-			<Link to="/create">Make Cards</Link>
-			<Link to="/cards">Use Cards</Link>
+			<Link to={process.env.PUBLIC_URL + "/create"}>Make Cards</Link>
+			<Link to={process.env.PUBLIC_URL + "/cards"}>Use Cards</Link>
 		</main>
 	);
 };

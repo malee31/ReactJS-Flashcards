@@ -6,7 +6,7 @@ import '../css/Nav.css';
 export default() => {
 	return(
 		<nav>
-			<Link to="/"><img src={HomeIcon} alt="Home"></img></Link>
+			<Link to={process.env.PUBLIC_URL + "/"}><img src={HomeIcon} alt="Home"></img></Link>
 		</nav>
 	);
 }

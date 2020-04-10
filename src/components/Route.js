@@ -104,13 +104,13 @@ export default class WordBank extends React.Component
 			<Router>
 				<Nav/>
 				<Switch>
-					<Route exact path={["/", "/home", "/ReactJS-Flashcards/", "/ReactJS-Flashcards/home"]}>
+					<Route exact path={[process.env.PUBLIC_URL + "/", process.env.PUBLIC_URL + "/home"]}>
 						<Home/>
 					</Route>
-					<Route exact path={["/create", "/ReactJS-Flashcards/create"]}>
+					<Route exact path={process.env.PUBLIC_URL + "/create"}>
 						<Creator wordSets={this.state.words} addWord={this.addCurrentPair} pair={this.state.currentPair} change={this.setCurrentPair} editHandler={this.editIndex} editing={this.editCurrent} del={this.deleteIndex}/>
 					</Route>
-					<Route exact path={["/cards", "/ReactJS-Flashcards/cards"]}>
+					<Route exact path={process.env.PUBLIC_URL + "/cards"}>
 						<Flashcards card={this.state.words[this.state.currentIndex]} flipped={this.state.flipped} onNext={this.nextCard}/>
 					</Route>
 					<Route>
